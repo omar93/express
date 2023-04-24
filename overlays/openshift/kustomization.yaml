@@ -5,5 +5,5 @@ resources:
   - ../../base
   - deployment.yaml
   - route.yaml
-  - build.yaml
+  - buildconfig.yaml
   - imagestream.yaml
