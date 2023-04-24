@@ -1,28 +1,31 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
+  labels:
+    app.kubernetes.io/instance: express
   name: express-app
+  namespace: omar
 spec:
-  runPolicy: Serial
-  source:
-    type: Git
-    git:
-      uri: https://github.com/omar93/express.git
-  strategy:
-    type: Source
-    sourceStrategy:
-      from:
-        kind: ImageStreamTag
-        name: node:14
-        namespace: openshift
-      env:
-        - name: NPM_RUN
-          value: "start"
   output:
     to:
       kind: ImageStreamTag
-      name: express-app:latest
+      name: 'express-app:latest'
+  runPolicy: Serial
+  source:
+    git:
+      uri: 'https://github.com/omar93/express.git'
+    type: Git
+  strategy:
+    sourceStrategy:
+      env:
+        - name: NODE_ENV
+          value: production
+      from:
+        kind: ImageStreamTag
+        name: 'node:14'
+        namespace: openshift
+    type: Source
   triggers:
     - type: ConfigChange
     - type: ImageChange
-    - type: "github"
+    - type: github
