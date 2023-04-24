@@ -15,7 +15,6 @@ spec:
     git:
       uri: 'https://github.com/omar93/express.git'
     type: Git
-  strategy:
 sourceStrategy:
   env:
     - name: NODE_ENV
