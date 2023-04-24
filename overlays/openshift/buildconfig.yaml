@@ -28,4 +28,7 @@ spec:
   triggers:
     - type: ConfigChange
     - type: ImageChange
-    - type: github
+    - type: GitHub
+      github:
+        secretReference:
+          name: github-webhook-secret
