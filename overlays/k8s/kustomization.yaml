@@ -5,3 +5,4 @@ namePrefix: express-
 
 resources:
   - ../../base
+  - deployment.yaml

@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - deployment.yaml
   - route.yaml
   - build.yaml
   - imagestream.yaml
