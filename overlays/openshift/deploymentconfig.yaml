@@ -1,0 +1,30 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: express-app
+spec:
+  replicas: 1
+  selector:
+    app: express-app
+  strategy:
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        app: express-app
+    spec:
+      containers:
+        - name: express-app-container
+          image: express-app:latest
+          ports:
+            - containerPort: 3000
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - express-app-container
+        from:
+          kind: ImageStreamTag
+          name: express-app:latest
