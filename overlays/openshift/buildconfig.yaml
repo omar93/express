@@ -16,14 +16,13 @@ spec:
       uri: 'https://github.com/omar93/express.git'
     type: Git
   strategy:
-    sourceStrategy:
-      env:
-        - name: NODE_ENV
-          value: production
-      from:
-        kind: ImageStreamTag
-        name: 'node:14'
-        namespace: openshift
+sourceStrategy:
+  env:
+    - name: NODE_ENV
+      value: production
+  from:
+    kind: DockerImage
+    name: 'node:14'
     type: Source
   triggers:
     - type: ConfigChange
