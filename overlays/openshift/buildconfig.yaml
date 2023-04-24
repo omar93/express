@@ -16,13 +16,13 @@ spec:
       uri: 'https://github.com/omar93/express.git'
     type: Git
   strategy:
-    sourceStrategy:
-      env:
-        - name: NODE_ENV
-          value: production
+    dockerStrategy:
       from:
         kind: DockerImage
-        type: Source
+        name: 'node:14'
+      noCache: true
+      dockerfilePath: Dockerfile
+    type: Docker
   triggers:
     - type: ConfigChange
     - type: ImageChange
