@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: express-route
+spec:
+  to:
+    kind: Service
+    name: express-service
+  port:
+    targetPort: http
+

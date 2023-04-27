@@ -29,3 +29,14 @@ spec:
               port: 3000
             initialDelaySeconds: 5
             timeoutSeconds: 3
+          env:
+            - name: DOCKERHUB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: dockerhub-credentials
+                  key: username
+            - name: DOCKERHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: dockerhub-credentials
+                  key: password
