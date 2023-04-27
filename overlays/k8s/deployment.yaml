@@ -15,6 +15,7 @@ spec:
       containers:
         - name: express-app-container
           image: omaralhamad/express:latest
+          imagePullPolicy: Always   # Add this line to set imagePullPolicy
           ports:
             - containerPort: 3000
           livenessProbe:
