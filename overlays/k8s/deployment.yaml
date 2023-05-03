@@ -9,6 +9,7 @@ spec:
   replicas: 1
   template:
     metadata:
+      name: my-express-app-pod   # set a specific name for the pod
       labels:
         app: express-app
     spec:
